@@ -1,0 +1,60 @@
+insert into cazare values(1,'interior',4);
+insert into cazare values(2,'interior',4);
+insert into cazare values(3,'exterior',3);
+insert into cazare values(4,'interior',2);
+insert into cazare values(6,'exterior',2);
+
+insert into medic_veterinar values(10,'Marius',0723345676);
+insert into medic_veterinar values(12,'Dana',0731045596);
+insert into medic_veterinar values(23,'George',0741448091);
+insert into medic_veterinar values(39,'Cristian',0771045806);
+insert into medic_veterinar values(18,'Alex',0766743288);
+
+insert into persoana values(NULL,'Butnaru Alex','Str. Sf. Lazar, nr.16',0765489234,NULL);
+insert into persoana values(NULL,'Popa Mihaela','Str. Traian, nr.56',0765469031,NULL);
+insert into persoana values(NULL,'Popescu Ionut','Str. Bradului, nr.2A',0788456206,'voluntar');
+insert into persoana values(NULL,'Dima Catalin','Str. Aurel Vlaicu, nr.112',0788456106,NULL);
+insert into persoana values(NULL,'Plopan Irina','Str. Ion Creanga, nr.138',0741446273,NULL);
+insert into persoana values(NULL,'Raschitor Georgiana ','Str. Olari, nr.8',0749955039,NULL);
+
+insert into caine values(NULL,'Rex','M','mica',to_date('10-10-2013','DD-MM-YYYY'),NULL,1); 
+insert into caine values(NULL,'Max','M','mica',to_date('10-11-2017','DD-MM-YYYY'),NULL,1); 
+insert into caine values(NULL,'Kyra','F','medie',to_date('01-02-2019','DD-MM-YYYY'),NULL,2);
+insert into caine values(NULL,'Brie','F','mica',to_date('03-07-2019','DD-MM-YYYY'),NULL,1);
+insert into caine values(NULL,'Koda','M','mare',to_date('28-11-2019','DD-MM-YYYY'),NULL,4);
+insert into caine values(NULL,'Cinnamon','M','mica',SYSDATE,NULL,1);
+insert into caine values(NULL,'Luna','F','medie',SYSDATE,NULL,3);
+
+insert into fisa_medicala values(NULL,'verificare',0,to_date('29-11-2019','DD-MM-YYYY'),12,'Dana',12);
+insert into fisa_medicala values(NULL,'vaccin',0,to_date('12-09-2019','DD-MM-YYYY'),11,'Marius',10);
+insert into fisa_medicala values(NULL,'verificare',0,SYSDATE,14,'Marius',10);
+insert into fisa_medicala values(NULL,'operatie',100,SYSDATE,12,'Marius',10);
+insert into fisa_medicala values(NULL,'verificare',0,SYSDATE,16,'George',23);
+insert into fisa_medicala values(NULL,'vaccin',10,SYSDATE,17,'Alex',18)
+
+
+insert into adoptie values(NULL,'distanta',to_date('16-12-2019','DD-MM-YYYY'),11,4);
+insert into adoptie values(NULL,'sediu',to_date('28-11-2019','DD-MM-YYYY'),12,5);
+insert into adoptie values(NULL,'distanta',to_date('17-12-2019','DD-MM-YYYY'),15,9);
+insert into adoptie values(NULL,'sediu',SYSDATE,14,7);
+insert into adoptie values(NULL,'revendicare',SYSDATE,16,8);
+insert into adoptie values(NULL,'sediu',SYSDATE,13,4);
+
+insert into donatie values(NULL,'provizii',to_date('10-09-2018','DD-MM-YYYY'),7);
+insert into donatie values(NULL,'transfer bancar',to_date('09-11-2019','DD-MM-YYYY'),5);
+insert into donatie values(NULL,'transfer bancar',to_date('01-12-2019','DD-MM-YYYY'),6);
+insert into donatie values(NULL,'2% impozit',to_date('01-12-2019','DD-MM-YYYY'),8);
+insert into donatie values(NULL,'2% impozit, transfer bancar',SYSDATE,9); 
+
+
+select * from fisa_medicala;
+select * from caine;
+select * from medic_veterinar;
+select * from persoana;
+select * from adoptie;
+select * from cazare;
+select * from donatie;
+
+
+
+
