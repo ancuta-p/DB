@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+
+
+/* Set height of body and the document to 100% */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family:"Times New Roman";
+    background-image: url("https://cdn.dribbble.com/users/821493/screenshots/5985826/dog-dribbble.gif");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: left bottom;
+    background-color: rgb(225,213,196)
+}
+
+/* Style tab links */
+.tablink {
+	font-weight: bold;
+	font-family: "Times New Roman";
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 12px;
+    font-size: 18px;
+    width: 14.26%;
+}
+
+.tablink:hover {
+    background-color: #579;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: rgb(80,63,52);
+    padding: 100px 20px;
+    height: 100%;
+
+}
+
+table, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    border-color: rgb(80,63,52);
+    text-align: center;
+}
+th, td {
+    padding: 10px;
+}
+
+input, select, textarea{
+    color: rgb(80,63,52);
+}
+
+</style>
+</head>
+<body>
+    <a href="caine"><button class="tablink" style="background:rgb(80,63,52); color: white">Caini</button></a>
+    <a href="cazare"><button class="tablink" style="background:rgb(99,78,64); color: white">Cazari</button></a>
+    <a href="persoana"><button class="tablink" style="background:rgb(99,78,64); color: white">Persoane</button></a>
+    <a href="adoptie"><button class="tablink" style="background:rgb(99,78,64); color: white">Adoptii</button></a>
+    <a href="donatie"><button class="tablink" style="background:rgb(99,78,64); color: white">Donatii</button></a>
+    <a href="medic_veterinar"><button class="tablink" style="background:rgb(99,78,64); color: white">Medici</button></a>
+    <a href="fisa_medicala"><button class="tablink" style="background:rgb(99,78,64); color: white">Fise medicale</button></a>
+	<div  class="tabcontent">
+	<center>
+  		<h1 >ADAUGA</h1>
+
+      <form class="was-validated" method="POST" action="/add_caine">
+		  Nume:
+           <div class="col-6 col-sm-3">
+               <input class="form-control " name="nume" type="text"  placeholder="ex. Rex">
+           </div>
+
+          Sex:
+           <div class="col-6 col-sm-3"><select class="custom-select" name="sex" >
+              <option class="dropdown-item" value="M">M</option>
+              <option value="F">F</option>
+           </select></div>
+
+          Talie:
+          <div class="col-6 col-sm-3">
+              <select class="custom-select" name="talie">
+                <option value="mica">mica</option>
+                <option value="medie">medie</option>
+			    <option value="mare">mare</option>
+              </select>
+          </div>
+
+		  Data primirii:
+          <div class="col-6 col-sm-3">
+              <input class="form-control " name="data_primirii" type="text"  placeholder="ex. 10-12-2019" required>
+          </div>
+
+		  Observatii:
+          <div class="col-6 col-sm-3">
+               <input  class="form-control" name="observatii" type="text">
+           </div>
+
+          Nr cazare:
+		  <div class="col-6 col-sm-3">
+                  <select class="custom-select" name="nr_cazare" >
+              {% for i in cazare%}
+                <option value={{i[0]}}>{{i}}</option>
+              {% endfor %}
+           </select>
+          </div>
+          <br>
+        <button class="btn btn-outline-dark" type="submit">Adauga</button>
+      </form>
+  </center>
+</div>
+
+<div id="Caini" >
+	<center>
+		<h2 >CAINI</h2>
+      <br>
+  		<table style="width:70%">
+  			<tr>
+    			<th>ID</th>
+                <th>Nr cazare</th>
+    			<th>Nume</th>
+    			<th>Sex</th>
+    			<th>Talie</th>
+    			<th>Data primirii</th>
+    			<th>Observatii</th>
+
+				<th>Editeaza/Sterge</th>
+
+  			</tr>
+        {% for caine in caine %}
+  			<tr>
+    			<td>{{caine["id"]}}</td>
+                <td>{{caine["nr_cazare"]}}</td>
+    			<td>{{caine["nume"]}}</td>
+    			<td>{{caine["sex"]}}</td>
+    			<td>{{caine["talie"]}}</td>
+    			<td>{{caine["data_primirii"]}}</td>
+    			<td>{{caine["observatii"]}}</td>
+
+				<td>
+					<form  method="POST" action="/get_caine">
+                    <button type="submit" name="id" value="{{caine['id']}}" class="btn btn-outline-dark">Editeaza</button>
+                    </form>
+                <form class="was-validated" method="POST" action="/del_caine">
+                  <button type="submit" name="id" value="{{caine['id']}}" class="btn btn-outline-dark">Sterge</button>
+                </form>
+
+                </td>
+
+  			</tr>
+  			{% endfor %}
+		  </table>
+      <br><br><br>
+  </center>
+</div>
+
+<div  id="Caini" class="tabcontent">
+	<center>
+		<h2 >ISTORIC</h2>
+      <br>
+  		<table style="width:70%">
+  			<tr>
+    			<th>ID</th>
+                <th>Nr cazare</th>
+    			<th>Nume</th>
+    			<th>Sex</th>
+    			<th>Talie</th>
+    			<th>Data primirii</th>
+    			<th>Observatii</th>
+
+
+
+  			</tr>
+        {% for caine in istoric %}
+  			<tr>
+    			<td>{{caine["id"]}}</td>
+                <td>{{caine["nr_cazare"]}}</td>
+    			<td>{{caine["nume"]}}</td>
+    			<td>{{caine["sex"]}}</td>
+    			<td>{{caine["talie"]}}</td>
+    			<td>{{caine["data_primirii"]}}</td>
+    			<td>{{caine["observatii"]}}</td>
+
+
+
+  			</tr>
+  			{% endfor %}
+		  </table>
+      <br><br><br>
+  </center>
+</div>
+
+</body>
+</html>
